@@ -1,0 +1,52 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>lq-spring-dock</groupId>
+	<artifactId>lq-spring-dock</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>lq-spring-dock</name>
+	<description>lq-spring-dock</description>
+
+	<properties>
+		<io.springfox.version>2.4.0</io.springfox.version>
+		<rest-assured.version>3.0.0</rest-assured.version>
+		<modelmapper.version>1.1.0</modelmapper.version>
+		<spring-security-auth0.version>0.0.3</spring-security-auth0.version>
+		<it.skip>true</it.skip>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<mainClass>com.lq.StandaloneApp</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.40</version>
+		</dependency>
+	</dependencies>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>lq-nexus-maven</id>
+			<url>http://godev-nexus:8081/repository/maven-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+</project>

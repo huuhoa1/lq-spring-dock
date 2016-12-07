@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+   db:
+     build: ./db/
+     image: ldoc55bl.le500.loto-quebec.com:5000/lq/lq-dock-db:latest
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: admin
+       MYSQL_DATABASE: lqbd
+       MYSQL_USER: admin
+       MYSQL_PASSWORD: admin
+     networks:
+      - net 
+
+   webapp:
+     build: ./webapp/
+     depends_on:
+       - db
+     image: ldoc55bl.le500.loto-quebec.com:5000/lq/lq-dock-webapp:latest
+     restart: 'no'
+     environment:
+        DB_URL: jdbc:mysql://lqdock_db_1/lqbd?user=root&password=admin
+     networks:
+      - net
+
+networks:
+  net:
+    driver: bridge 
